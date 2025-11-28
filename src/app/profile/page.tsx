@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useAccount, useReadContract } from 'wagmi'
-import { base } from 'wagmi/chains'
 import { formatEther } from 'viem'
 import BottomNav from '@/components/BottomNav'
 import { useFarcaster } from '@/context/FarcasterContext'
@@ -10,6 +9,8 @@ import { CHECKIN_CONTRACT_ADDRESS, CHECKIN_ABI, STAR_TOKEN_ADDRESS, ERC20_ABI } 
 
 export default function ProfilePage() {
   const { address } = useAccount()
+  
+  // Handle Farcaster Context
   const farcasterState = useFarcaster()
   const context = farcasterState?.context
   
@@ -31,6 +32,7 @@ export default function ProfilePage() {
     query: { enabled: !!address }
   })
 
+  // Safe parsing BigInt
   const currentStreak = userData && userData[1] ? Number(userData[1]) : 0
   const farcasterUser = context?.user
 
