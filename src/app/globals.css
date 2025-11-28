@@ -1,0 +1,230 @@
+:root {
+  /* Palette Galaxy */
+  --background: #0f172a;
+  --foreground: #f8fafc; /* Text Light */
+  
+  /* Gradient Colors */
+  --primary-start: #3b82f6; /* Blue */
+  --primary-end: #8b5cf6;   /* Violet */
+  --accent: #06b6d4;        /* Cyan */
+
+  /* Glassmorphism Vars */
+  --card-bg: rgba(30, 41, 59, 0.65); 
+  --border: rgba(255, 255, 255, 0.1);
+  
+  /* Status Colors */
+  --success: #22c55e;
+  --error: #ef4444;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  /* Background Deep Space Gradient */
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Efek Bintang (Stars) Sederhana dengan CSS */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Layout Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- GLASSMORPHISM CARD --- */
+.card {
+  background: var(--card-bg);
+  /* Efek Blur */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255,255,255,0.2); /* Highlight top border */
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  
+  /* Glow Shadow */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  text-align: center;
+}
+
+/* Judul dengan Gradient Text */
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: #94a3b8; /* Slate 400 */
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* --- STATS GRID --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.5); /* Violet Glow */
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+  /* Gradient Background */
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 12px;
+  
+  /* Neon Shadow */
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
+  filter: brightness(1.1);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: #334155; /* Slate 700 */
+  color: #64748b;      /* Slate 500 */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --- STATUS MESSAGES --- */
+.status {
+  margin-top: 20px;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.status.success {
+  background-color: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.status.info {
+  background-color: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #bae6fd;
+}
+
+.status.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+/* Header/Connect Button Area */
+.header-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* Override AppKit Button Variables (Optional) */
+appkit-button {
+  --w3m-accent: #8b5cf6 !important; /* Violet Accent */
+  --w3m-border-radius-master: 50px !important;
+}
