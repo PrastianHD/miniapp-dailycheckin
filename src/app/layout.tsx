@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { headers } from 'next/headers';
 import './globals.css';
 import ContextProvider from '@/context';
-
-// PASTIKAN IMPORT INI BENAR:
 import FarcasterProvider from '@/context/FarcasterContext';
 
 const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
@@ -20,7 +18,7 @@ export const metadata: Metadata = {
       {
         url: `${appUrl}/opengraph-image.png`, // Buat gambar ini di folder public
         width: 1200,
-        height: 630,
+        height: 800,
         alt: "Daily Star Preview",
       },
     ],
@@ -55,11 +53,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <FarcasterProvider> {/* Tambahkan ini */}
+        {/* --- BACKGROUND LAYERS --- */}
+        <div className="space-bg"></div> {/* Nebula Gradient Bergerak */}
+        <div className="stars"></div>    {/* Bintang Berkelip */}
+        <div className="dust"></div>     {/* Debu Angkasa Melayang */}
+        
+        <FarcasterProvider>
           <ContextProvider cookies={cookies}>{children}</ContextProvider>
         </FarcasterProvider>
       </body>
     </html>
   );
 }
-
