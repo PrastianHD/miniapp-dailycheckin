@@ -15,22 +15,7 @@ export async function GET() {
       imageUrl: "https://miniapp-dailycheckin.vercel.app/image.png",
       buttonTitle: "Check In Now",
       splashImageUrl: "https://miniapp-dailycheckin.vercel.app/icon.png",
-      splashBackgroundColor: "#0f172a",
-
-      subtitle: "Build streaks, earn rewards.",
-      description: "Daily checkin app. Maintain your streak to earn $STAR tokens airdropped directly to your wallet.",
-      primaryCategory: "productivity",
-      tags: [
-        "checkin",
-        "base",
-        "rewards",
-        "streak",
-        "token"
-      ],
-      tagline: "Checkin and earn STAR tokens!",
-      ogTitle: "Daily Star Check-In",
-      ogDescription: "Join the daily streak on Base and earn crypto rewards!",
-      castShareUrl: "https://warpcast.com/~/compose?text=I%20just%20checked%20in%20on%20Daily%20Star!%20%2B1%20Streak%20%F0%9F%94%A5&embeds[]=https://miniapp-dailycheckin.vercel.app"
+      splashBackgroundColor: "#0f172a"
     }
   };
 
