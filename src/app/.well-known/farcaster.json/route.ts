@@ -12,7 +12,7 @@ export async function GET() {
       name: "Daily Star",
       iconUrl: "https://miniapp-dailycheckin.vercel.app/icon.png",
       homeUrl: "https://miniapp-dailycheckin.vercel.app",
-      imageUrl: "https://miniapp-dailycheckin.vercel.app/image.png",
+      imageUrl: "https://miniapp-dailycheckin.vercel.app/opengraph-image.png",
       buttonTitle: "Check In Now",
       splashImageUrl: "https://miniapp-dailycheckin.vercel.app/icon.png",
       splashBackgroundColor: "#0f172a"
