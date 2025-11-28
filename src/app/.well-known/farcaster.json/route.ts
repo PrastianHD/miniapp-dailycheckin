@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-
   const config = {
     accountAssociation: {
       header: "eyJmaWQiOjIzNzYyMiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDMwNTFDNDdDODgyQ0ZBOURhNmMzMjg1OUMwMzZmNmI0MTVmMDhFMTAifQ",
@@ -16,11 +14,9 @@ export async function GET() {
       homeUrl: "https://miniapp-dailycheckin.vercel.app",
       imageUrl: "https://miniapp-dailycheckin.vercel.app/image.png",
       buttonTitle: "Check In Now",
-      splashImageUrl: "https://miniapp-dailycheckin.vercel.app/splash.png",
+      splashImageUrl: "https://miniapp-dailycheckin.vercel.app/icon.png",
       splashBackgroundColor: "#0f172a",
-      webhookUrl: "https://miniapp-dailycheckin.vercel.app/api/webhook",
-      
-      // Metadata Tambahan 
+
       subtitle: "Build streaks, earn rewards.",
       description: "Daily checkin app. Maintain your streak to earn $STAR tokens airdropped directly to your wallet.",
       primaryCategory: "productivity",
