@@ -1,28 +1,27 @@
 'use client';
 
 import { useEffect, useState, createContext, useContext } from "react";
-// PERBAIKAN: Import 'Context.FrameContext' (jika namespace) atau 'Context' saja.
-// Pada v0.1.12, biasanya cukup import type { Context }
-import sdk, { type Context } from "@farcaster/frame-sdk";
+import sdk from "@farcaster/frame-sdk";
 
-// Definisikan tipe untuk Context Value
+// SOLUSI UTAMA: 
+// Kita "ambil" tipe data langsung dari sdk.context menggunakan TypeScript inference.
+// Ini otomatis mendeteksi tipe yang benar (apakah FrameContext, MiniAppContext, dll).
+type FrameContextType = Awaited<typeof sdk.context>;
+
 interface FarcasterContextType {
-  // Ganti FrameContext menjadi Context
-  context: Context | undefined;
+  context: FrameContextType | undefined;
   isSDKLoaded: boolean;
 }
 
-// Buat React Context
 const FarcasterContext = createContext<FarcasterContextType | undefined>(undefined);
 
 export default function FarcasterProvider({ children }: { children: React.ReactNode }) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  // Ganti FrameContext menjadi Context
-  const [context, setContext] = useState<Context>();
+  const [context, setContext] = useState<FrameContextType>();
 
   useEffect(() => {
     const load = async () => {
-      // Ambil context dari SDK
+      // sdk.context adalah Promise, jadi kita await
       const ctx = await sdk.context;
       setContext(ctx);
       
@@ -30,7 +29,6 @@ export default function FarcasterProvider({ children }: { children: React.ReactN
       sdk.actions.ready({});
     };
 
-    // Cek apakah SDK ada (berjalan di dalam frame)
     if (sdk && !isSDKLoaded) {
       setIsSDKLoaded(true);
       load();
@@ -44,7 +42,6 @@ export default function FarcasterProvider({ children }: { children: React.ReactN
   );
 }
 
-// Custom Hook untuk mempermudah penggunaan di komponen lain
 export function useFarcaster() {
   return useContext(FarcasterContext);
 }
