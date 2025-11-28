@@ -21,12 +21,10 @@ export default function FarcasterProvider({ children }: { children: React.ReactN
 
   useEffect(() => {
     const load = async () => {
-      // sdk.context adalah Promise, jadi kita await
-      const ctx = await sdk.context;
-      setContext(ctx);
-      
       // Beritahu Farcaster client bahwa app siap
       sdk.actions.ready({});
+      const ctx = await sdk.context;
+      setContext(ctx);
     };
 
     if (sdk && !isSDKLoaded) {
